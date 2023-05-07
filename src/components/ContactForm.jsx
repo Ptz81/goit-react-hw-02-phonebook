@@ -34,11 +34,14 @@ export class ContactForm extends Component {
     return (
       <form className={css.form }onSubmit={this.handleSubmit}>
 
-        <label className={css.form_label}>
+        <label htmlFor='name' className={css.form_label}>
           Name
-           <input
+        </label>
+
+        <input
           type="text"
             name="name"
+            id = 'name'
             value={this.state.name}
             className={css.form_input}
             onChange={this.handleChange}
@@ -46,13 +49,15 @@ export class ContactForm extends Component {
           title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
           required
         />
-        </label>
 
-        <label className={css.form_label}>
+        <label htmlFor='number' className={css.form_label}>
           Number
+        </label>
+        
         <input
           type="tel"
             name="number"
+            id='number'
             value={this.state.number}
             className={css.form_input}
             onChange={this.handleChange}
@@ -60,9 +65,8 @@ export class ContactForm extends Component {
           title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
           required
           />
-        </label>
 
-      <input type="submit" className={css.form_btn} value='Add contact'/>
+      <input type="submit" className={css.btn} value='Add contact'/>
       </form>
     )
   }
