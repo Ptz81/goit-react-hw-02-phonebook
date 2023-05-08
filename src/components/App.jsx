@@ -8,7 +8,6 @@ import { ContactList } from './ContactList';
 
 
 export class App extends Component {
-
   state = {
     contacts: [
       {id: 'id-1', name: 'Rosie Simpson', number: '459-12-56'},
@@ -18,72 +17,54 @@ export class App extends Component {
     ],
     filter: '',
   };
-
-
-
   filterContact = e => {
-    this.setState({filter: e.currentTarget.value });
+    this.setState({filter: e.target.value });
   };
-
-
-
-
   formSubmitHandler = ({ name, number }) => {
-
-    const newContact = {
-      id: shortid(),
-      name,
-      number
-    }
-
-    this.state.contacts.find(contact => contact.name.toLowerCase() === name.toLowerCase()) ? alert(`${name} is already in contacts`) : this.setState(prevContact => ({
-      contacts: [newContact,
-        ...prevContact.contacts],
+  const newContact = {
+    id: shortid.generate(),
+    name,
+    number
+  };
+  if (this.state.contacts.some(contact => contact.name.toLowerCase() === name.toLowerCase())) {
+    alert(`${name} is already in contacts`);
+  } else {
+    this.setState(prevState => ({
+      contacts: [...prevState.contacts, newContact],
     }));
   }
-
-
-
-    deleteContact = id => {
-      this.setState(prevContact => ({
-        contacts: prevContact.contacts.filter(contact => contact.id !== id)
-      }))
-
-    }
-
-
-  render() {
-
+}
+  deleteContact = id => {
+    this.setState(prevContact => ({
+      contacts: prevContact.contacts.filter(contact => contact.id !== id)
+    }))
+  }
+   normalizedContact = () => {
     const { contacts, filter } = this.state;
-    const normalizedContact = this.state.filter !== '' ? contacts.filter(contact => contact.name.toLowerCase().includes(filter.toLowerCase())) : [];
-
+     return  contacts.filter(contact =>
+      contact.name.toLowerCase().includes(filter.toLowerCase()),
+    );
+    }
+  render() {
+const { filter } = this.state;
     return (
-
-
-
     <div className={css.container}>
       <>
         <Section title="Phonebook">
           <ContactForm onSubmit = {this.formSubmitHandler }/>
         </Section>
-
         <Section title="Contacts">
-
-          <Filter
+        <Filter
             filter={filter}
             filterContact={this.filterContact}
-          />
-
-          <ContactList
-            contacts={normalizedContact}
-            deleteContact={this.deleteContact}
-            filter={filter}
-          />
-
+        />
+        <ContactList
+            contacts={this.normalizedContact()}
+            deleteContact={this.deleteContact()}
+        />
         </Section>
       </>
     </div>
   );
-
 }
-  };
+};

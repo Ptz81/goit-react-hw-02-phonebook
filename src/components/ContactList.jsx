@@ -1,13 +1,11 @@
-import { Component } from "react";
+import React from "react";
 import css from './Phonebook.module.css'
 import PropTypes from 'prop-types';
 
-export class ContactList extends Component {
-
-  render() {
+export const ContactList = ({contacts, deleteContact}) => {
     return (
        <ul className={css.contact_list}>
-        {this.props.contacts.map(({ id, name, number }) => {
+        {contacts.map(({ id, name, number }) => {
           return (
             <li className={css.contact_item} key={id}>
               <p>
@@ -15,9 +13,7 @@ export class ContactList extends Component {
               </p>
               <button
                 className={css.btn}
-                onClick={() => {
-                  this.props.deleteContact(id);
-                }}
+                onClick={() => deleteContact(id)}
               >
                 Delete
               </button>
@@ -26,9 +22,7 @@ export class ContactList extends Component {
         })}
       </ul>
     )
-  }
 }
-
 
 ContactList.propTypes = {
   contacts: PropTypes.arrayOf(PropTypes.shape({
@@ -36,5 +30,5 @@ ContactList.propTypes = {
   name: PropTypes.string.isRequired,
   number: PropTypes.string.isRequired,
   })),
-  deleteContact: PropTypes.func.isRequired,
+  deleteContact: PropTypes.func,
 }

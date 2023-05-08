@@ -2,8 +2,9 @@ import PropTypes from 'prop-types';
 import css from './Phonebook.module.css';
 import { Component } from "react";
 
-export class ContactForm extends Component {
 
+
+export class ContactForm extends Component {
 
   state = {
     name: '',
@@ -11,7 +12,6 @@ export class ContactForm extends Component {
   }
 
   handleChange = e => {
-
     const { name, value } = e.currentTarget;
     this.setState({ [name]: value });
   }
@@ -26,18 +26,18 @@ export class ContactForm extends Component {
     onSubmit: PropTypes.func.isRequired,
   };
 
+
   reset = () => {
     this.setState ({name: '', number: ''})
   }
 
+
   render() {
     return (
       <form className={css.form }onSubmit={this.handleSubmit}>
-
         <label htmlFor='name' className={css.form_label}>
           Name
         </label>
-
         <input
           type="text"
             name="name"
@@ -49,11 +49,9 @@ export class ContactForm extends Component {
           title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
           required
         />
-
         <label htmlFor='number' className={css.form_label}>
           Number
         </label>
-        
         <input
           type="tel"
             name="number"
@@ -65,10 +63,8 @@ export class ContactForm extends Component {
           title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
           required
           />
-
       <input type="submit" className={css.btn} value='Add contact'/>
       </form>
     )
   }
-
 }

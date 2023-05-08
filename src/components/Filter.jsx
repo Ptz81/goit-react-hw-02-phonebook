@@ -3,7 +3,6 @@ import css from './Phonebook.module.css';
 import PropTypes from 'prop-types';
 
 export class Filter extends Component{
-
   render() {
     return (
       <>
@@ -17,7 +16,6 @@ export class Filter extends Component{
         value={this.props.filter}
         onChange={this.props.filterContact}
         />
-
       </>
     )
   }
