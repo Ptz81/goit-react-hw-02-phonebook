@@ -60,7 +60,7 @@ const { filter } = this.state;
         />
         <ContactList
             contacts={this.normalizedContact()}
-            deleteContact={this.deleteContact()}
+            deleteContact={this.deleteContact}
         />
         </Section>
       </>
