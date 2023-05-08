@@ -11,19 +11,14 @@
     border-radius: 20px;
     border: #212121 1px solid;
 }
-
 .form_input{
   margin-bottom: 20px;
   height: 20px;
-
 }
-
 .form_label{
   font-weight: 600;
 text-transform: uppercase;
 }
-
-
 .btn {
   margin-right: 10px;
   min-width: 100px;
@@ -36,39 +31,27 @@ text-transform: uppercase;
   border-radius: 10px;
   cursor: pointer;
 }
-
 .btn:hover {
   background-color: rgb(18, 95, 168);
   font-weight: 600;
   scale: 1.05;
   transition: scale, font-weight, background-color, cubic-bezier(0.075, 0.82, 0.165, 1), 300ms;
-
 }
 .section{
   margin-left: auto;
   margin-right: auto;
 }
-
-
 .form{
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-
 }
-
 .contact_list{
   display: flex;
   flex-direction: column;
   color: #fff;
-
 }
-
-
-
-
 .contact_item{
   list-style: none;
-
 }

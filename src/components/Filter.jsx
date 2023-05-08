@@ -6,7 +6,7 @@ export class Filter extends Component{
   render() {
     return (
       <>
-         <p className={css.filter_text}>
+      <p className={css.filter_text}>
         Find contacts by name
       </p>
         <input

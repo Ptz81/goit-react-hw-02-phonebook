@@ -5,33 +5,25 @@ import { Component } from "react";
 
 
 export class ContactForm extends Component {
-
   state = {
     name: '',
     number: '',
   }
-
   handleChange = e => {
     const { name, value } = e.currentTarget;
     this.setState({ [name]: value });
   }
-
   handleSubmit = e => {
     e.preventDefault();
     this.props.onSubmit(this.state);
     this.reset();
   }
-
-   static propTypes = {
+  static propTypes = {
     onSubmit: PropTypes.func.isRequired,
   };
-
-
   reset = () => {
     this.setState ({name: '', number: ''})
   }
-
-
   render() {
     return (
       <form className={css.form }onSubmit={this.handleSubmit}>
